@@ -2,10 +2,11 @@ package handlers
 
 import (
 	"context"
-	"data"
 	"log"
 	"net/http"
 	"strconv"
+
+	"github.com/dijotmathews/microservices-go/data"
 
 	"github.com/gorilla/mux"
 )
