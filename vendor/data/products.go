@@ -7,6 +7,7 @@ import (
 	"time"
 )
 
+// Product ...
 type Product struct {
 	ID          int     `json:"id"`
 	Name        string  `json:"name"`
@@ -18,19 +19,28 @@ type Product struct {
 	DeletedOn   string  `json:"-"`
 }
 
+// Products ...
 type Products []*Product
 
+// Validate ...
+func (p *Product) Validate() error {
+	return nil
+}
+
+// FromJSON ...
 func (p *Product) FromJSON(r io.Reader) error {
 	e := json.NewDecoder(r)
 	return e.Decode(p)
 }
 
+// ToJSON ...
 func (p *Products) ToJSON(w io.Writer) error {
 	e := json.NewEncoder(w)
 	return e.Encode(p)
 
 }
 
+// UpdateProduct ...
 func UpdateProduct(id int, p *Product) error {
 	_, pos, err := findProduct(id)
 
@@ -42,6 +52,7 @@ func UpdateProduct(id int, p *Product) error {
 	return nil
 }
 
+// ErrProductNotFound ...
 var ErrProductNotFound = fmt.Errorf("Product not found")
 
 func findProduct(id int) (*Product, int, error) {
@@ -54,6 +65,7 @@ func findProduct(id int) (*Product, int, error) {
 	return nil, -1, ErrProductNotFound
 }
 
+// AddProduct ...
 func AddProduct(p *Product) Products {
 	p.ID = getNextID()
 	productList = append(productList, p)
@@ -65,6 +77,7 @@ func getNextID() int {
 	return lp.ID + 1
 }
 
+// GetProducts ...
 func GetProducts() Products {
 	return productList
 }
