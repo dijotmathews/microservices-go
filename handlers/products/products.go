@@ -15,8 +15,6 @@
 package handlers
 
 import (
-	"context"
-	"fmt"
 	"log"
 	"net/http"
 	"strconv"
@@ -71,41 +69,5 @@ func (p Products) AddProduct(rw http.ResponseWriter, r *http.Request) {
 	data.AddProduct(&prod)
 }
 
-// GetProducts ...
-// swagger:route GET /products products listProducts
-// Returns a list of products
-func (p *Products) GetProducts(rw http.ResponseWriter, r *http.Request) {
-	lp := data.GetProducts()
-	err := lp.ToJSON(rw)
-	if err != nil {
-		http.Error(rw, "Unable to marshal json", http.StatusInternalServerError)
-	}
-}
-
 // KeyProduct ...
 type KeyProduct struct{}
-
-//MiddlewareProductValidation ...
-func (p Products) MiddlewareProductValidation(next http.Handler) http.Handler {
-	return http.HandlerFunc(func(rw http.ResponseWriter, r *http.Request) {
-		prod := data.Product{}
-
-		err := prod.FromJSON(r.Body)
-		if err != nil {
-			p.l.Println("[ERROR] deserializing product", err)
-			http.Error(rw, "Unable to unmarshal json", http.StatusBadRequest)
-			return
-		}
-
-		err = prod.Validate()
-		if err != nil {
-			p.l.Println("[ERROR] validating product")
-			http.Error(rw, fmt.Sprintf("Error validating product %s", err), http.StatusBadRequest)
-			return
-		}
-
-		ctx := context.WithValue(r.Context(), KeyProduct{}, prod)
-		r = r.WithContext(ctx)
-		next.ServeHTTP(rw, r)
-	})
-}

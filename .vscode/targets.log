@@ -1,4 +1,6 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+make: *** No rule to make target 'all'.  Stop.
+
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -6,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Wed Jul 27 08:18:27 2022
+# Make data base, printed on Wed Jul 27 22:02:49 2022
 
 # Variables
 
@@ -45,7 +47,7 @@ VSCODE_NLS_CONFIG = {"locale":"en-gb","availableLanguages":{},"_languagePackSupp
 # environment
 _ = /usr/share/code/code
 # environment
-JOURNAL_STREAM = 8:59515
+JOURNAL_STREAM = 8:62502
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile (from 'Makefile', line 1)
@@ -63,7 +65,7 @@ VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
 # environment
-MANAGERPID = 2179
+MANAGERPID = 1814
 # environment
 VSCODE_CWD = /home/dijo
 # environment
@@ -77,7 +79,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
-SESSION_MANAGER = local/dijo-Strix-15-GL503GE:@/tmp/.ICE-unix/2393,unix/dijo-Strix-15-GL503GE:/tmp/.ICE-unix/2393
+SESSION_MANAGER = local/dijo-Strix-15-GL503GE:@/tmp/.ICE-unix/2424,unix/dijo-Strix-15-GL503GE:/tmp/.ICE-unix/2424
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -87,7 +89,7 @@ XDG_MENU_PREFIX = gnome-
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 14ad183d8a984f6589bd9dbbe81c7674
+INVOCATION_ID = bc77e55585064d3aa7fa94ed05f6b75b
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -97,7 +99,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 21751
+GIO_LAUNCHED_DESKTOP_FILE_PID = 5331
 # automatic
 %F = $(notdir $%)
 # environment
@@ -107,7 +109,7 @@ PWD = /home/dijo/dev/learn/go/microservices-go
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 2355
+SSH_AGENT_PID = 2386
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -207,7 +209,7 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LANG = C
 # environment
-VSCODE_PID = 21751
+VSCODE_PID = 5331
 # variable set hash-table stats:
 # Load=99/1024=10%, Rehash=0, Collisions=13/124=10%
 
@@ -217,9 +219,9 @@ VSCODE_PID = 21751
 
 # Directories
 
-# . (device 2051, inode 3164121): 11 files, no impossibilities.
+# . (device 2051, inode 3164121): 12 files, no impossibilities.
 
-# 11 files, no impossibilities in 1 directories.
+# 12 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -244,7 +246,7 @@ check_install:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-27 08:01:13.851854995
+#  Last modified 2022-07-27 15:40:53.516233692
 #  File has been updated.
 #  Successfully updated.
 
@@ -253,7 +255,7 @@ swagger:
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 4):
-	GOCACHE=off GO111MODULE=off swagger generate spec -o ./swagger.yml --scan-models
+	GO111MODULE=off swagger generate spec -o ./swagger.yml
 
 # Not a target:
 .DEFAULT:
@@ -269,14 +271,12 @@ swagger:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 18 / storage = 150 B / avg = 8 B
-# current buf: size = 8162 B / used = 150 B / count = 18 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 19 / storage = 162 B / avg = 8 B
+# current buf: size = 8162 B / used = 162 B / count = 19 / avg = 8 B
 
-# strcache performance: lookups = 24 / hit rate = 25%
+# strcache performance: lookups = 25 / hit rate = 24%
 # hash-table stats:
-# Load=18/8192=0%, Rehash=0, Collisions=1/24=4%
-# Finished Make data base on Wed Jul 27 08:18:27 2022
+# Load=19/8192=0%, Rehash=0, Collisions=1/25=4%
+# Finished Make data base on Wed Jul 27 22:02:49 2022
 
  
-make: *** No rule to make target 'all'.  Stop.
-

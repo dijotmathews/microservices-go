@@ -8,7 +8,7 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/dijotmathews/microservices-go/handlers"
+	handlers "github.com/dijotmathews/microservices-go/handlers/products"
 
 	"github.com/gorilla/mux"
 )
@@ -21,6 +21,7 @@ func main() {
 	sm := mux.NewRouter()
 	getRouter := sm.Methods(http.MethodGet).Subrouter()
 	getRouter.HandleFunc("/", ph.GetProducts)
+	getRouter.HandleFunc("/{id:[0-9]+}", ph.GetProduct)
 
 	putRouter := sm.Methods(http.MethodPut).Subrouter()
 	putRouter.HandleFunc("/{id:[0-9]+}", ph.UpdateProducts)

@@ -55,6 +55,12 @@ func (p *Products) ToJSON(w io.Writer) error {
 
 }
 
+// ToJSON ...
+func (p *Product) ToJSON(w io.Writer) error {
+	e := json.NewEncoder(w)
+	return e.Encode(p)
+}
+
 // UpdateProduct ...
 func UpdateProduct(id int, p *Product) error {
 	_, pos, err := findProduct(id)
@@ -95,6 +101,16 @@ func getNextID() int {
 // GetProducts ...
 func GetProducts() Products {
 	return productList
+}
+
+// GetProduct ...
+func GetProduct(id int) Product {
+	for i := 0; i < len(productList); i++ {
+		if id == productList[i].ID {
+			return *productList[i]
+		}
+	}
+	return Product{}
 }
 
 var productList = []*Product{
