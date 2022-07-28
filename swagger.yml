@@ -1,5 +1,32 @@
 info: {}
 paths:
+  /{id}:
+    get:
+      consumes:
+      - application/json
+      description: This will show available product by default.
+      operationId: returnProduct
+      parameters:
+      - description: maximum numnber of results to return
+        format: int32
+        in: query
+        name: limit
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          $ref: '#/responses/someResponse'
+        "422":
+          $ref: '#/responses/validationError'
+        default:
+          $ref: '#/responses/genericError'
+      schemes:
+      - http
+      summary: Returns product filtered by ID.
+      tags:
+      - products
+      - users
   /products:
     get:
       description: Returns a list of products

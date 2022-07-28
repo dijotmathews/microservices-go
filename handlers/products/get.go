@@ -20,8 +20,37 @@ func (p *Products) GetProducts(rw http.ResponseWriter, r *http.Request) {
 }
 
 // GetProduct ...
-// swagger:route GET /product/{id} product
-// Returns a single product
+// swagger:route GET /{id} products users returnProduct
+//
+// Returns product filtered by ID.
+//
+// This will show available product by default.
+//
+//
+//     Consumes:
+//     - application/json
+//
+//
+//     Produces:
+//     - application/json
+//
+//
+//     Schemes: http
+//
+//
+//     Parameters:
+//       + name: limit
+//         in: query
+//         description: maximum numnber of results to return
+//         required: false
+//         type: integer
+//         format: int32
+//
+//
+//     Responses:
+//       default: genericError
+//       200: someResponse
+//       422: validationError
 func (p *Products) GetProduct(rw http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	id, perr := strconv.Atoi(vars["id"])

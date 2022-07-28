@@ -73,6 +73,17 @@ func UpdateProduct(id int, p *Product) error {
 	return nil
 }
 
+// DeleteProduct ...
+func DeleteProduct(id int) error {
+	i := findIndexByProductID(id)
+	if i == -1 {
+		return ErrProductNotFound
+	}
+
+	productList = append(productList[:i], productList[i+1])
+	return nil
+}
+
 // ErrProductNotFound ...
 var ErrProductNotFound = fmt.Errorf("Product not found")
 
@@ -113,6 +124,27 @@ func GetProduct(id int) Product {
 	return Product{}
 }
 
+// GetProductByID ...
+func GetProductByID(id int) (*Product, error) {
+	i := findIndexByProductID(id)
+	if id == -1 {
+		return nil, ErrProductNotFound
+	}
+
+	return productList[i], nil
+}
+
+// findIndexByProductID finds the index of a product in the database
+// returns -1 when no product can be found
+func findIndexByProductID(id int) int {
+	for i, p := range productList {
+		if p.ID == id {
+			return i
+		}
+	}
+	return -1
+}
+
 var productList = []*Product{
 	&Product{
 		ID:          1,
@@ -124,7 +156,7 @@ var productList = []*Product{
 		UpdatedOn:   time.Now().UTC().String(),
 	},
 	&Product{
-		ID:          1,
+		ID:          2,
 		Name:        "espresso",
 		Description: "black coffee",
 		Price:       2.33,
